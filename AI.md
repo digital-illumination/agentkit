@@ -30,6 +30,14 @@
 - **Use `rg` for search** — prefer ripgrep over grep for speed and safety
 - **Ask before network calls** — don't make external API calls without approval
 
+### Email/Communication Drafts
+
+When asked to draft emails or communications:
+1. **Use first person** — "I" not "we"
+2. **Save as HTML** — Create in `/drafts/` folder as `.html` files with inline CSS styling
+3. **Open in browser** — User can then select all and copy formatted content into email client
+4. **Drafts are gitignored** — `/drafts/` folder should be excluded from version control
+
 ### Commit Policy
 
 **When to commit:**
@@ -239,5 +247,5 @@ The bootstrap file contains the complete initialisation prompt that will:
 
 ---
 
-**Context System Version:** 2.1  
-**Last Updated:** December 2025
+**Context System Version:** 2.2  
+**Last Updated:** January 2026
