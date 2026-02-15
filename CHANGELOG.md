@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.3.0] - 2026-02-15
+
+### Added
+- Ad-hoc feature workflow — features can now enter "Now" directly without existing in the "Next" horizon
+- Origin column (`Roadmap` / `Ad-hoc`) in the roadmap template's "Now" table to track where features came from
+- Maintenance mode guidance in roadmap template for mature products where the North Star is largely achieved
+- Ad-hoc path in session starter `01-plan-next-feature.md` — detects whether user specified a feature or wants roadmap-driven selection
+- Dual-path documentation in SPEC-DRIVEN.md Roadmap-to-Spec Pipeline (strategic path + ad-hoc path + maintenance mode)
+
 ## [3.2.0] - 2026-02-15
 
 ### Added

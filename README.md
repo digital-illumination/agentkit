@@ -105,4 +105,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 
-**Version:** 3.2.0 | **License:** MIT
+**Version:** 3.3.0 | **License:** MIT

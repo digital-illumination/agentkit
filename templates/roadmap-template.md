@@ -9,10 +9,12 @@
 
   HOW AGENTS USE THIS FILE:
   A planning agent reads this file alongside the constitution and existing specs
-  to propose the next feature spec. The funnel narrows from broad outcomes (Future)
-  to spec-ready features (Now):
+  to propose the next feature spec. Features can enter the pipeline two ways:
 
-    North Star → Future (outcomes) → Next (feature areas) → Now (specs) → specs/NNN/
+    STRATEGIC: North Star → Future (outcomes) → Next (features) → Now (specs) → specs/NNN/
+    AD-HOC:    User request or agent proposal → Now (specs) → specs/NNN/
+
+  Both paths produce the same spec-driven artifacts. The only difference is origin.
 
   REVIEW CADENCE:
   Review quarterly at minimum. Move items between horizons as time passes.
@@ -22,7 +24,15 @@
   - Priority: P1 (critical), P2 (important), P3 (nice-to-have)
   - Status: Draft, Reviewed, In Progress, Complete, Released
   - Feature IDs: NNN-feature-name (matching specs/ directory names)
+  - Origin: Roadmap (from Next horizon) or Ad-hoc (direct request / agent proposal)
   - Use British English throughout
+
+  MAINTENANCE MODE:
+  When the North Star is largely achieved, a project enters maintenance mode.
+  In this state the "Future" section describes sustaining outcomes (reliability,
+  performance, user satisfaction) rather than transformational goals. "Next" may
+  be intentionally empty, with work driven by ad-hoc requests flowing directly
+  into "Now". The system works identically — only the source of features changes.
 -->
 
 ## North Star
@@ -88,19 +98,28 @@
   Refined features READY FOR CODE GENERATION. Each entry here should have a
   corresponding directory in specs/NNN-feature-name/ with at minimum a spec.md.
 
-  When a feature moves from "Next" to "Now":
-  1. Create specs/NNN-feature-name/ directory
-  2. Generate spec.md from the roadmap description + constitution + North Star
-  3. Generate plan.md, tasks.md, qa.md from the spec
-  4. Update the Status column below
+  Features arrive here via two paths:
+
+  FROM ROADMAP (strategic):
+  1. Move the item from "Next" to this table
+  2. Create specs/NNN-feature-name/ directory
+  3. Generate spec.md from the roadmap description + constitution + North Star
+  4. Set Origin: Roadmap
+
+  AD-HOC (user request or agent proposal):
+  1. Assign the next sequential feature ID (NNN-feature-name)
+  2. Create specs/NNN-feature-name/ directory
+  3. Generate spec.md from the user request + constitution + North Star
+  4. Add directly to this table with Origin: Ad-hoc
+  (No "Next" entry required — the feature skips the strategic pipeline.)
 
   Sprint/Cycle is a free-text field for your project's iteration naming
   (e.g., "Sprint 4", "February", "Cycle 2026-Q1-B").
 -->
 
-| Spec | Name | Status | Priority | Sprint/Cycle | Notes |
-|------|------|--------|----------|--------------|-------|
-| [`NNN-feature-name`](specs/NNN-feature-name/spec.md) | [Short name] | [Draft/Reviewed/In Progress/Complete] | [P1/P2/P3] | [Current iteration] | [Brief context or blockers] |
+| Spec | Name | Status | Priority | Origin | Sprint/Cycle | Notes |
+|------|------|--------|----------|--------|--------------|-------|
+| [`NNN-feature-name`](specs/NNN-feature-name/spec.md) | [Short name] | [Draft/Reviewed/In Progress/Complete] | [P1/P2/P3] | [Roadmap/Ad-hoc] | [Current iteration] | [Brief context or blockers] |
 
 ---
 
@@ -141,13 +160,22 @@
   It is NOT a placeholder to fill in — it is reference documentation.
 -->
 
-### Proposing a New Feature
+### Proposing a New Feature (from Roadmap)
 
 1. Read: North Star, constitution, this roadmap, and all existing specs
 2. Identify the highest-priority item in "Next" that has no unresolved blockers
 3. Generate a draft `spec.md` using `templates/spec-template.md`
-4. Move the item from "Next" to "Now" with Status: Draft
+4. Move the item from "Next" to "Now" with Status: Draft, Origin: Roadmap
 5. Present the draft spec for human review
+
+### Proposing an Ad-hoc Feature
+
+1. Read: North Star, constitution, this roadmap, and all existing specs
+2. Take the feature request from the user (or propose one based on project gaps)
+3. Assign the next sequential feature ID (NNN-feature-name)
+4. Generate a draft `spec.md` using `templates/spec-template.md`
+5. Add the feature directly to "Now" with Status: Draft, Origin: Ad-hoc
+6. Present the draft spec for human review
 
 ### Picking Up Work
 

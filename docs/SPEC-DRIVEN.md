@@ -19,7 +19,7 @@ Each feature produces a set of traceable artifacts:
 ## Workflow
 
 0. Define the North Star and strategic horizons in `ROADMAP.md`.
-1. Select the next feature from the roadmap's "Next" horizon and move it to "Now".
+1. Select the next feature — either from the roadmap's "Next" horizon or from an ad-hoc request — and add it to "Now".
 2. Capture the product problem and scope in a spec.
 3. Translate the spec into a plan with architecture and milestones.
 4. Break the plan into tasks and track status.
@@ -195,13 +195,28 @@ Use this approach to recreate a project from the written specs and ADRs:
 
 ## Roadmap-to-Spec Pipeline
 
-The roadmap feeds the spec-driven workflow, enabling autonomous feature proposal with human oversight:
+The roadmap feeds the spec-driven workflow, enabling autonomous feature proposal with human oversight. Features enter the pipeline via two paths:
+
+### Strategic path (from roadmap)
 
 1. **Planning agent** reads `ROADMAP.md` (North Star + horizons), `constitution.md`, and existing specs
 2. Selects the highest-priority unblocked item from the "Next" horizon
 3. Generates a draft `spec.md` in `specs/NNN-feature-name/` using `templates/spec-template.md`
-4. Moves the item from "Next" to "Now" in `ROADMAP.md` with Status: Draft
+4. Moves the item from "Next" to "Now" in `ROADMAP.md` with Status: Draft, Origin: Roadmap
 5. **Human reviews** the draft spec and approves (Status: Reviewed)
 6. **Implementation agent** picks up the reviewed spec and runs the standard plan → tasks → implement pipeline
 
-This pipeline enables autonomous feature proposal while maintaining human oversight at the spec review gate.
+### Ad-hoc path (direct request or agent proposal)
+
+1. **User provides a feature request** or **agent identifies a gap** (bug fix, tech debt, customer request, quick win)
+2. **Planning agent** reads `ROADMAP.md`, `constitution.md`, and existing specs for context
+3. Assigns the next sequential feature ID and generates a draft `spec.md`
+4. Adds the feature directly to "Now" in `ROADMAP.md` with Status: Draft, Origin: Ad-hoc
+5. **Human reviews** the draft spec and approves (Status: Reviewed)
+6. **Implementation agent** picks up the reviewed spec — identical from here onward
+
+### Maintenance mode
+
+When a product's North Star is largely achieved, the "Next" horizon may be intentionally empty. In this state, the "Future" section describes sustaining outcomes (reliability, performance, user satisfaction) and most work enters via the ad-hoc path. The spec-driven workflow, Ralph Wiggum loop, and QA requirements apply identically regardless of feature origin.
+
+Both paths produce the same spec-driven artifacts and follow the same review gate, ensuring traceability and quality regardless of how a feature originates.
