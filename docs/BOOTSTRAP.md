@@ -26,6 +26,7 @@ repository/
 ├── AGENTS.md                         # Codex / AGENTS.md-compatible tools pointer
 ├── GEMINI.md                         # Gemini CLI auto-discovery pointer
 ├── .windsurfrules                    # Windsurf / Cascade auto-discovery pointer
+├── ROADMAP.md                        # Strategic roadmap (from template)
 ├── docs/
 │   ├── BOOTSTRAP.md                  # This file (reference)
 │   ├── SPEC-DRIVEN.md                # Spec-driven workflow
@@ -99,7 +100,19 @@ cp templates/qa-template.md specs/000-foundation/qa.md
 
 Edit `specs/000-foundation/spec.md` to describe the foundation of your project (auth, core data model, initial UI, deployment).
 
-### Step 5: Fill in Project Docs
+### Step 5: Create Roadmap
+
+```bash
+cp templates/roadmap-template.md ROADMAP.md
+```
+
+Edit `ROADMAP.md` with your project's:
+- North Star (single sentence outcome)
+- Future outcomes (3-5 high-level goals for the next 12 months)
+- Next features (feature areas for the next 6 months)
+- Now features (specs ready for implementation in the next 3 months)
+
+### Step 6: Fill in Project Docs
 
 Edit the docs copied by the bootstrap script:
 - `docs/PROJECT-CONTEXT.md` — Project identity, business context, scope boundaries
@@ -107,11 +120,11 @@ Edit the docs copied by the bootstrap script:
 - `docs/CODING-STANDARDS.md` — Language-specific conventions
 - `docs/DECISIONS.md` — Add initial decision for adopting spec-driven development
 
-### Step 6: Verify and Commit
+### Step 7: Verify and Commit
 
 ```bash
 bash .context/scripts/verify-context.sh
-git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules docs/ specs/ templates/ updates/ .specify/ .context
+git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules ROADMAP.md docs/ specs/ templates/ updates/ .specify/ .context
 git commit -m "docs: Initialise AI context system v3.0"
 ```
 
@@ -205,6 +218,16 @@ From source analysis, linter config, existing style guides:
 #### docs/DECISIONS.md
 Seed with any major architectural decisions visible in the codebase or git history.
 
+#### ROADMAP.md
+```bash
+cp templates/roadmap-template.md ROADMAP.md
+```
+Draft initial roadmap based on:
+- README goals and feature descriptions
+- Git history for recent and planned work
+- Existing specs for current feature state
+- Stakeholder discussions for strategic direction
+
 ### Step 4: Create Foundation Spec for Existing Features
 
 ```bash
@@ -218,7 +241,7 @@ Edit the spec to describe **what already exists** (not what you plan to build). 
 
 ```bash
 bash .context/scripts/verify-context.sh
-git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules docs/ specs/ templates/ updates/ .specify/ .context
+git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules ROADMAP.md docs/ specs/ templates/ updates/ .specify/ .context
 git commit -m "docs: Initialise AI context system v3.0 from existing codebase"
 ```
 
@@ -287,6 +310,7 @@ After completing either path, verify:
 
 - [ ] `AGENT.md` has no remaining `[PLACEHOLDER]` markers
 - [ ] Agent pointer files exist and point to AGENT.md (CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules)
+- [ ] ROADMAP.md has a defined North Star and at least one item in "Now"
 - [ ] Constitution reflects actual project values
 - [ ] At least one spec exists in `specs/`
 - [ ] CI commands in AGENT.md actually work when run

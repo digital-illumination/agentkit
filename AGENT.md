@@ -35,6 +35,7 @@ For the project constitution, see `.specify/memory/constitution.md`.
 [project-root]/
 ├── [source]/           # [Description]
 ├── [tests]/            # [Description]
+├── ROADMAP.md          # Strategic roadmap
 ├── docs/               # Project documentation
 ├── specs/              # Feature specifications
 ├── templates/          # Document templates
@@ -194,6 +195,8 @@ See `templates/tasks-template.md` for the full template.
 
 [PLACEHOLDER: Populate per project]
 
+*This table mirrors the "Now" section of `ROADMAP.md`. Keep both in sync.*
+
 | Spec | Status | Notes |
 |------|--------|-------|
 | `specs/000-foundation` | [Status] | [Notes] |
@@ -210,8 +213,9 @@ Read context in this order, stopping when you have enough:
 | **2. Recent** | `/updates/YYYY-MM.md` (current month) | Every session |
 | **3. If coding** | `/docs/CODING-STANDARDS.md` | Before writing code |
 | **4. If architecting** | `/docs/ARCHITECTURE.md` + `/docs/DECISIONS.md` | Before major changes |
-| **5. If deep dive** | `/docs/PROJECT-CONTEXT.md` | When you need full understanding |
-| **6. If feature work** | `specs/NNN-feature/spec.md` | When working on a feature |
+| **5. If planning** | `ROADMAP.md` | Before proposing features |
+| **6. If deep dive** | `/docs/PROJECT-CONTEXT.md` | When you need full understanding |
+| **7. If feature work** | `specs/NNN-feature/spec.md` | When working on a feature |
 
 **Principle:** Load minimum context needed. Do not read everything unless required.
 
@@ -228,6 +232,7 @@ Read context in this order, stopping when you have enough:
 | `/docs/ARCHITECTURE.md` | Building features, debugging | System design, integrations |
 | `/docs/CODING-STANDARDS.md` | Writing/reviewing code | Style, patterns, conventions |
 | `/docs/DECISIONS.md` | Before major changes | Past decisions & rationale |
+| `ROADMAP.md` | Before feature planning | Strategic direction, feature pipeline |
 | `/updates/MONTHLY-UPDATES-TEMPLATE.md` | Creating/updating monthly files | Template & rules |
 
 ---
@@ -259,6 +264,7 @@ When introducing this system to an existing repo:
 | `/docs/PROJECT-CONTEXT.md` | New features, components, or integrations added |
 | `/docs/ARCHITECTURE.md` | System design or tech stack changes |
 | `/docs/DECISIONS.md` | Major technical/architectural decisions made |
+| `ROADMAP.md` | When features move between horizons or new outcomes identified |
 | `specs/NNN-feature/*.md` | After each implementation session |
 
 ---

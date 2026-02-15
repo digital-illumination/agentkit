@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-02-15
+
+### Added
+- `templates/roadmap-template.md` — Strategic roadmap template with North Star, Future/Next/Now horizons, and agent planning workflow
+- ROADMAP.md added to recommended files in verify scripts
+- Roadmap-to-Spec Pipeline section in SPEC-DRIVEN.md documenting the two-agent workflow
+- Roadmap integrated into BOOTSTRAP.md (directory tree, both initialisation paths, post-bootstrap checklist)
+
+### Changed
+- Updated Context Ladder in AGENT.md to include ROADMAP.md at level 5 (before proposing features)
+- Updated SPEC-DRIVEN.md workflow to start from roadmap (steps 0-1 added)
+- Updated BOOTSTRAP.md with new Step 5 "Create Roadmap" in Path A, renumbered subsequent steps
+- Updated bootstrap scripts with roadmap creation step in "Next steps" output
+- Bumped version to 3.1.0
+
 ## [3.0.0] - 2026-02-15
 
 ### Added

@@ -26,6 +26,7 @@ agent_pointer_files=(
 recommended_files=(
   "specs/000-foundation/spec.md"
   ".specify/memory/constitution.md"
+  "ROADMAP.md"
 )
 
 missing=0

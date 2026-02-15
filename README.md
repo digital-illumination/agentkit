@@ -12,7 +12,7 @@ A tool-agnostic, versioned context system for AI coding agents. Provides spec-dr
 | `GEMINI.md` | Thin pointer for Gemini CLI auto-discovery |
 | `.windsurfrules` | Thin pointer for Windsurf / Cascade auto-discovery |
 | `docs/` | 7 context documents (bootstrap, spec-driven, testing, architecture, standards, decisions, project context) |
-| `templates/` | 6 reusable templates (spec, plan, tasks, QA, checklist, constitution) |
+| `templates/` | 7 reusable templates (spec, plan, tasks, QA, checklist, constitution, roadmap) |
 | `scripts/` | 6 helper scripts (3 bash + 3 PowerShell) for setup and maintenance |
 | `updates/` | Monthly work log template |
 
@@ -104,4 +104,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 
-**Version:** 3.0.0 | **License:** MIT
+**Version:** 3.1.0 | **License:** MIT

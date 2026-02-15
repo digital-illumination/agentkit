@@ -8,6 +8,7 @@ This project uses a spec-driven workflow. The goal is to make product intent, se
 
 Each feature produces a set of traceable artifacts:
 
+- **Strategic roadmap**: `ROADMAP.md` (project root) — North Star, horizons, and feature pipeline
 - **Product spec**: `specs/NNN-feature-name/spec.md`
 - **Implementation plan**: `specs/NNN-feature-name/plan.md`
 - **Task tracking**: `specs/NNN-feature-name/tasks.md`
@@ -17,13 +18,15 @@ Each feature produces a set of traceable artifacts:
 
 ## Workflow
 
-1. Capture the product problem and scope in a spec.
-2. Translate the spec into a plan with architecture and milestones.
-3. Break the plan into tasks and track status.
-4. Record architectural and security decisions as ADRs.
-5. Implement the minimum shippable slice.
-6. Update documentation as infrastructure or scope changes.
-7. Validate with the acceptance scenarios in the spec.
+0. Define the North Star and strategic horizons in `ROADMAP.md`.
+1. Select the next feature from the roadmap's "Next" horizon and move it to "Now".
+2. Capture the product problem and scope in a spec.
+3. Translate the spec into a plan with architecture and milestones.
+4. Break the plan into tasks and track status.
+5. Record architectural and security decisions as ADRs.
+6. Implement the minimum shippable slice.
+7. Update documentation as infrastructure or scope changes.
+8. Validate with the acceptance scenarios in the spec.
 
 ## Spec Status Lifecycle
 
@@ -187,3 +190,18 @@ Use this approach to recreate a project from the written specs and ADRs:
 4. Configure build and deploy pipelines per the deployment documentation
 5. Recreate infrastructure per the runbooks
 6. Verify against the acceptance scenarios in each spec
+
+---
+
+## Roadmap-to-Spec Pipeline
+
+The roadmap feeds the spec-driven workflow, enabling autonomous feature proposal with human oversight:
+
+1. **Planning agent** reads `ROADMAP.md` (North Star + horizons), `constitution.md`, and existing specs
+2. Selects the highest-priority unblocked item from the "Next" horizon
+3. Generates a draft `spec.md` in `specs/NNN-feature-name/` using `templates/spec-template.md`
+4. Moves the item from "Next" to "Now" in `ROADMAP.md` with Status: Draft
+5. **Human reviews** the draft spec and approves (Status: Reviewed)
+6. **Implementation agent** picks up the reviewed spec and runs the standard plan → tasks → implement pipeline
+
+This pipeline enables autonomous feature proposal while maintaining human oversight at the spec review gate.
