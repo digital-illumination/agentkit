@@ -33,6 +33,15 @@ When modifying `docs/SPEC-DRIVEN.md` or `docs/TESTING-STRATEGY.md`:
 - Provide examples for multiple languages where practical
 - Reference the templates directory for format details
 
+## Roadmap Template Conventions
+
+When modifying `templates/roadmap-template.md`:
+- **Future** items must be outcome-focused (state of the world), not feature-focused
+- **Next** items must describe the problem space and desired outcome, not the implementation
+- **Now** items must link to `specs/NNN-feature-name/` using the existing spec conventions
+- The Agent Planning Workflow section is reference documentation, not a placeholder
+- Keep guidance in HTML comments consistent with other templates
+
 ## Versioning
 
 - Tag releases using semver (e.g., `v3.0.0`)

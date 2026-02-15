@@ -24,7 +24,8 @@ $AgentPointerFiles = @(
 
 $RecommendedFiles = @(
   "specs/000-foundation/spec.md",
-  ".specify/memory/constitution.md"
+  ".specify/memory/constitution.md",
+  "ROADMAP.md"
 )
 
 $Missing = @()
