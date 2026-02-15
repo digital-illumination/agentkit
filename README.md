@@ -1,92 +1,89 @@
 # AI Context System
 
-This repository provides a tool-agnostic, versioned context system for AI coding tools (Windsurf, Cursor, Claude, Copilot, etc.).
-It is designed to be added to projects as a git submodule, then copied into the project root so tools can read it directly.
+A tool-agnostic, versioned context system for AI coding agents. Provides spec-driven development workflows, document templates, and structured project context that works with any AI tool (Claude, Windsurf, Cursor, Copilot, etc.).
 
-## Goals
+## What's Included
 
-- Provide consistent, high-quality project context for AI assistants
-- Keep documentation lightweight, modular, and up to date
-- Enable repeatable setup across repositories
-- Support deliberate upgrades through versioning
+| Directory | Contents |
+|-----------|----------|
+| `AGENT.md` | Entry point — project context, session rules, conventions |
+| `CLAUDE.md` | Thin pointer for Claude Code auto-discovery |
+| `docs/` | 7 context documents (bootstrap, spec-driven, testing, architecture, standards, decisions, project context) |
+| `templates/` | 6 reusable templates (spec, plan, tasks, QA, checklist, constitution) |
+| `scripts/` | 6 helper scripts (3 bash + 3 PowerShell) for setup and maintenance |
+| `updates/` | Monthly work log template |
 
-## What This Repo Contains
+## Quick Start
 
-- `AI.md` — Entry point and behavioural rules for AI assistants
-- `docs/` — Context documents (architecture, standards, decisions, project context)
-- `updates/MONTHLY-UPDATES-TEMPLATE.md` — Template for monthly work logs
-- `scripts/` — Helpers for updating and copying context into projects
-- `CONTEXT-VERSION.md` — Track the context system version in use
-
-## Recommended Usage (Submodule + Copy)
-
-This pattern maximises adoption and tool compatibility:
-
-1) Add as a submodule
+### 1. Add as submodule
 
 ```bash
 git submodule add https://github.com/digital-illumination/ai-context-system.git .context
 ```
 
-2) Copy the context into the project root
+### 2. Run bootstrap
 
 ```bash
-bash .context/scripts/update-context.sh
+bash .context/scripts/bootstrap-new-repo.sh
 ```
 
-3) Commit the copied files in the project
+### 3. Fill in your project details
+
+Follow the instructions in `docs/BOOTSTRAP.md`:
+- **Path A** — New repository (fill in placeholders manually)
+- **Path B** — Existing repository (AI agent analyses codebase and generates context)
+
+### 4. Verify setup
 
 ```bash
-git add AI.md docs updates/MONTHLY-UPDATES-TEMPLATE.md .context
-git commit -m "chore: add ai context system"
+bash .context/scripts/verify-context.sh
 ```
+
+## Two Initialisation Paths
+
+### Path A: New Repository
+For brand new projects. The bootstrap script copies all files, then you (or an agent) fill in the `[PLACEHOLDER]` markers in AGENT.md and the docs.
+
+### Path B: Existing Repository
+For projects that already have code. An AI agent analyses your codebase (dependency files, source code, CI config, git history) and generates all context docs automatically. See `docs/BOOTSTRAP.md` for detailed instructions and copy-paste agent prompts.
+
+## Using with AI Tools
+
+### Session Start (any tool)
+```
+Read @AGENT.md and @updates/YYYY-MM.md
+```
+
+### Tool-Specific Notes
+
+| Tool | How It Loads Context |
+|------|---------------------|
+| **Claude Code** | Auto-reads `CLAUDE.md` which points to `AGENT.md` |
+| **Windsurf** | Use `@filename` to reference files |
+| **Cursor** | Use `@filename` or add to context with Cmd+Enter |
+| **Copilot** | Reference files in chat with `#file:` |
 
 ## Updating an Existing Project
 
-1) Pull latest submodule changes
-
 ```bash
 git submodule update --remote --merge
-```
-
-2) Re-copy the context files
-
-```bash
 bash .context/scripts/update-context.sh
-```
-
-3) Commit updated context
-
-```bash
-git add AI.md docs updates/MONTHLY-UPDATES-TEMPLATE.md .context
+git add AGENT.md CLAUDE.md docs/ templates/ updates/MONTHLY-UPDATES-TEMPLATE.md .context
 git commit -m "chore: update ai context system"
 ```
 
-## Using with AI Tools (Tool-Agnostic)
+## Upgrading from v2.x
 
-Use the option that matches what you're about to do:
+If you're upgrading from v2.x:
+1. Rename `AI.md` to `AGENT.md`
+2. Create `CLAUDE.md` (see template in this repo)
+3. Add the new files: `docs/SPEC-DRIVEN.md`, `docs/TESTING-STRATEGY.md`, `templates/`
+4. Update your scripts to reference `AGENT.md` instead of `AI.md`
+5. Run `bash .context/scripts/verify-context.sh` to check
 
-### 1) Session start (always)
-```
-Read @AI.md and @updates/YYYY-MM.md
-```
-Replace `YYYY-MM` with the current month (e.g., `2025-01`).
+## Versioning
 
-### 2) Before writing code
-```
-Read @docs/CODING-STANDARDS.md then implement [task]
-```
-
-### 3) Before major changes
-```
-Read @docs/DECISIONS.md and @docs/ARCHITECTURE.md before proceeding
-```
-
-If your tool supports file references (e.g., `@filename` in Windsurf/Cursor), use that syntax to load context files.
-
-## Versioning Strategy
-
-- Tag releases (e.g., `v2.1.0`) in this repo
+- Tag releases (e.g., `v3.0.0`) in this repo
 - Pin project submodules to a release tag for stability
 - Upgrade deliberately when ready
 
@@ -96,14 +93,10 @@ If your tool supports file references (e.g., `@filename` in Windsurf/Cursor), us
 - Avoid logging PII or client data in examples
 - Redact sensitive values in documentation when needed
 
-## Upgrade Checklist
+## Contributing
 
-1) Pull the latest submodule changes  
-2) Run the update script to copy files  
-3) Review diffs in `AI.md`, `docs/`, and `updates/MONTHLY-UPDATES-TEMPLATE.md`  
-4) Commit the updated context  
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
-## Notes
+---
 
-- The monthly update files (`updates/YYYY-MM.md`) live in the project and are not overwritten by the update script.
-- This repo is intentionally tool-agnostic and should work with any AI coding assistant.
+**Version:** 3.0.0 | **License:** MIT

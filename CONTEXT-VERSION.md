@@ -1,10 +1,6 @@
 # Context System Version
 
-**Version:** v2.1.0
-**Release Date:** 2025-12-31
-**Source:** AI Context System repository
+**Version**: v3.0.0
+**Release Date**: 2026-02-15
 
-## Notes
-
-- Update this file when you upgrade the context system.
-- Pin your project submodule to the matching tag.
+Update this file when upgrading the context system. Pin your `.context` submodule to the matching tag.

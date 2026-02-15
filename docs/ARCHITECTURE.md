@@ -1,14 +1,13 @@
 # Architecture
 
-This document describes the technical architecture and system design for the Altia Intel Salesforce project.
+This document describes the technical architecture and system design.
 
 ---
 
 ## System Overview
 
-**Platform:** Salesforce (Lightning Experience)  
-**Environment:** Production  
-**Org Type:** Sales Cloud
+**Platform:** [Platform, e.g., Web application, Mobile app, API service, Desktop application]
+**Environment:** [Environment details, e.g., Cloud-hosted, On-premises, Hybrid]
 
 ---
 
@@ -16,27 +15,26 @@ This document describes the technical architecture and system design for the Alt
 
 | Layer | Technology |
 |-------|------------|
-| **Backend** | Apex (Salesforce server-side) |
-| **Frontend** | Lightning Web Components (LWC) |
-| **Automation** | Flows (preferred), Process Builder (legacy — do not create new) |
-| **Testing** | Apex Test Classes, Jest (LWC) |
-| **Code Quality** | ESLint, Prettier |
-| **Deployment** | SFDX CLI, Manifest-based |
+| **Backend** | [e.g., Node.js, Python/Django, Go, .NET, Apex] |
+| **Frontend** | [e.g., React, Vue, Angular, LWC, SwiftUI] |
+| **Database** | [e.g., PostgreSQL, Firestore, MongoDB, SQL Server] |
+| **Automation** | [e.g., GitHub Actions, Flows, Scheduled tasks] |
+| **Testing** | [e.g., Vitest, pytest, Jest, cargo test] |
+| **Code Quality** | [e.g., ESLint, Prettier, ruff, clippy] |
+| **Deployment** | [e.g., Docker + Cloud Run, Vercel, Heroku, SFDX CLI] |
 
 ---
 
 ## Project Structure
 
 ```
-force-app/
-├── main/
-│   └── default/
-│       ├── classes/          # Apex classes
-│       ├── lwc/              # Lightning Web Components
-│       ├── flows/            # Flow definitions
-│       ├── objects/          # Custom objects & fields
-│       ├── permissionsets/   # Permission sets
-│       └── triggers/         # Apex triggers
+[PROJECT ROOT]/
+├── [source directory]/       # [Description]
+├── [config directory]/       # [Description]
+├── [test directory]/         # [Description]
+├── docs/                     # Project documentation
+├── specs/                    # Feature specifications
+└── [other directories]/      # [Description]
 ```
 
 ---
@@ -45,56 +43,38 @@ force-app/
 
 | Integration | Purpose | Data Flow | Status |
 |-------------|---------|-----------|--------|
-| **Intacct** | Financial/accounting | Accounts with `IntacctId` → Intacct | Active |
-| **Experience Cloud** | Community portal | Users ↔ Salesforce | Active |
+| [Integration name] | [Purpose] | [Data in/out] | [Active/Planned] |
 
 ---
 
 ## Data Model
 
-<!-- Add key custom objects and relationships -->
-
-### Core Objects
-- Standard Salesforce objects (Account, Contact, Opportunity, etc.)
-- Custom objects as needed for investigation software sales
+### Core Entities
+- [Entity 1]: [Description and key relationships]
+- [Entity 2]: [Description and key relationships]
 
 ---
 
 ## Key Feature Flows
 
-### Data Quality Dashboard
+### [Flow 1 - Name]
 
 ```
-User clicks Dashboard tab
-    ↓
-Lightning App Page loads `dataQualityDashboard` LWC
-    ↓
-LWC calls `DataQualityStatsController.getStats()` via @wire
-    ↓
-Apex runs SOQL queries against Lead, Contact, Account, Opportunity
-    ↓
-Stats returned to LWC → rendered in tabbed UI
-```
-
-**Files involved:**
-- `force-app/.../lwc/dataQualityDashboard/`
-- `force-app/.../classes/DataQualityStatsController.cls`
-
-### AI Enrichment (Planned)
-
-```
-Account created/updated
-    ↓
-Flow/Trigger fires (TBD)
-    ↓
-External AI service called
-    ↓
-AI fields populated on Account
+[User action or trigger]
+    |
+    v
+[Step 1 description]
+    |
+    v
+[Step 2 description]
+    |
+    v
+[Result]
 ```
 
 **Files involved:**
-- See `/AI_INSIGHTS_DEPLOYMENT_GUIDE.md`
-- See `/Account_AI_Fields_Summary.md`
+- [file path 1]
+- [file path 2]
 
 ---
 
@@ -104,47 +84,35 @@ Common request flows through the system:
 
 | Scenario | Path |
 |----------|------|
-| **View data quality** | UI → LWC (`dataQualityDashboard`) → Apex (`DataQualityStatsController`) → SOQL → Data |
-| **Send email from Flow** | Flow → `InvocableSendEmail` → Messaging.SingleEmailMessage → Delivered |
-| **Community login** | Experience Cloud → `CommunitiesLoginController` → Auth → Session |
-| **Record update** | UI → Standard/Custom Save → Triggers → Flows → Validation Rules → Commit |
+| [Scenario 1] | [Component chain] |
+| [Scenario 2] | [Component chain] |
 
 ---
 
 ## Security Model
 
-- Permission Sets for feature access
-- Field-Level Security on sensitive fields
-- Sharing Rules as configured in org
+- [Security aspect 1, e.g., "Authentication via JWT tokens"]
+- [Security aspect 2, e.g., "Role-based access control"]
+- [Security aspect 3, e.g., "Client-side encryption for sensitive data"]
 
 ---
 
 ## Deployment Architecture
 
 ### Environments
-| Environment | Purpose | Org Alias |
-|-------------|---------|-----------|
-| UAT Edu | User Acceptance Testing | `uat-edu` |
-| Production | Live environment | *TBC* |
 
-### Deployment Command
+| Environment | Purpose | Notes |
+|-------------|---------|-------|
+| [Dev] | [Purpose] | [Details] |
+| [Staging] | [Purpose] | [Details] |
+| [Production] | [Purpose] | [Details] |
+
+### Deployment Commands
+
 ```bash
-sf project deploy start -x manifest/package.xml -o <target-org>
+# [Deployment command with description]
 ```
 
 ---
 
-## Automation Strategy
-
-| Type | Status | Guidance |
-|------|--------|----------|
-| **Flows** | ✅ Preferred | Use for all new automation |
-| **Process Builder** | ⚠️ Legacy | Do NOT create new; migrate when touching existing |
-| **Workflow Rules** | ⚠️ Legacy | Do NOT create new |
-| **Apex Triggers** | ✅ Use when needed | For complex logic Flows can't handle |
-
-**Note:** Salesforce is retiring Process Builder. All new automation should use Flows.
-
----
-
-**Last Updated:** December 2025
+**Last Updated:** [Date]

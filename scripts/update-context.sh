@@ -11,9 +11,12 @@ if [ ! -d "$CONTEXT_DIR" ]; then
   exit 1
 fi
 
-cp "$CONTEXT_DIR/AI.md" ./AI.md
+cp "$CONTEXT_DIR/AGENT.md" ./AGENT.md
+cp "$CONTEXT_DIR/CLAUDE.md" ./CLAUDE.md
 mkdir -p ./docs
 cp -R "$CONTEXT_DIR/docs/." ./docs/
+mkdir -p ./templates
+cp -R "$CONTEXT_DIR/templates/." ./templates/
 mkdir -p ./updates
 cp "$CONTEXT_DIR/updates/MONTHLY-UPDATES-TEMPLATE.md" ./updates/
 
