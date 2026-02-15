@@ -8,6 +8,9 @@ A tool-agnostic, versioned context system for AI coding agents. Provides spec-dr
 |-----------|----------|
 | `AGENT.md` | Entry point — project context, session rules, conventions |
 | `CLAUDE.md` | Thin pointer for Claude Code auto-discovery |
+| `AGENTS.md` | Thin pointer for Codex / AGENTS.md-compatible tools |
+| `GEMINI.md` | Thin pointer for Gemini CLI auto-discovery |
+| `.windsurfrules` | Thin pointer for Windsurf / Cascade auto-discovery |
 | `docs/` | 7 context documents (bootstrap, spec-driven, testing, architecture, standards, decisions, project context) |
 | `templates/` | 6 reusable templates (spec, plan, tasks, QA, checklist, constitution) |
 | `scripts/` | 6 helper scripts (3 bash + 3 PowerShell) for setup and maintenance |
@@ -56,19 +59,21 @@ Read @AGENT.md and @updates/YYYY-MM.md
 
 ### Tool-Specific Notes
 
-| Tool | How It Loads Context |
-|------|---------------------|
-| **Claude Code** | Auto-reads `CLAUDE.md` which points to `AGENT.md` |
-| **Windsurf** | Use `@filename` to reference files |
-| **Cursor** | Use `@filename` or add to context with Cmd+Enter |
-| **Copilot** | Reference files in chat with `#file:` |
+| Tool | Auto-Discovery File | How It Loads Context |
+|------|---------------------|---------------------|
+| **Claude Code** | `CLAUDE.md` | Auto-reads `CLAUDE.md` which points to `AGENT.md` |
+| **OpenAI Codex** | `AGENTS.md` | Auto-reads `AGENTS.md` which points to `AGENT.md` |
+| **Gemini CLI** | `GEMINI.md` | Auto-reads `GEMINI.md` which points to `AGENT.md` |
+| **Windsurf** | `.windsurfrules` | Auto-reads `.windsurfrules` which points to `AGENT.md` |
+| **Cursor** | `.cursorrules` / `AGENTS.md` | Use `@filename` or add to context with Cmd+Enter |
+| **Copilot** | `AGENTS.md` | Reference files in chat with `#file:` |
 
 ## Updating an Existing Project
 
 ```bash
 git submodule update --remote --merge
 bash .context/scripts/update-context.sh
-git add AGENT.md CLAUDE.md docs/ templates/ updates/MONTHLY-UPDATES-TEMPLATE.md .context
+git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules docs/ templates/ updates/MONTHLY-UPDATES-TEMPLATE.md .context
 git commit -m "chore: update ai context system"
 ```
 
@@ -76,7 +81,7 @@ git commit -m "chore: update ai context system"
 
 If you're upgrading from v2.x:
 1. Rename `AI.md` to `AGENT.md`
-2. Create `CLAUDE.md` (see template in this repo)
+2. Create agent pointer files: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.windsurfrules` (see templates in this repo)
 3. Add the new files: `docs/SPEC-DRIVEN.md`, `docs/TESTING-STRATEGY.md`, `templates/`
 4. Update your scripts to reference `AGENT.md` instead of `AI.md`
 5. Run `bash .context/scripts/verify-context.sh` to check

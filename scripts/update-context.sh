@@ -13,6 +13,9 @@ fi
 
 cp "$CONTEXT_DIR/AGENT.md" ./AGENT.md
 cp "$CONTEXT_DIR/CLAUDE.md" ./CLAUDE.md
+cp "$CONTEXT_DIR/AGENTS.md" ./AGENTS.md
+cp "$CONTEXT_DIR/GEMINI.md" ./GEMINI.md
+cp "$CONTEXT_DIR/.windsurfrules" ./.windsurfrules
 mkdir -p ./docs
 cp -R "$CONTEXT_DIR/docs/." ./docs/
 mkdir -p ./templates

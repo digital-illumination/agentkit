@@ -11,6 +11,9 @@ if (-not (Test-Path $ContextDir)) {
 
 Copy-Item "$ContextDir/AGENT.md" -Destination "./AGENT.md" -Force
 Copy-Item "$ContextDir/CLAUDE.md" -Destination "./CLAUDE.md" -Force
+Copy-Item "$ContextDir/AGENTS.md" -Destination "./AGENTS.md" -Force
+Copy-Item "$ContextDir/GEMINI.md" -Destination "./GEMINI.md" -Force
+Copy-Item "$ContextDir/.windsurfrules" -Destination "./.windsurfrules" -Force
 if (-not (Test-Path "./docs")) { New-Item -ItemType Directory -Path "./docs" | Out-Null }
 Copy-Item "$ContextDir/docs/*" -Destination "./docs" -Recurse -Force
 if (-not (Test-Path "./templates")) { New-Item -ItemType Directory -Path "./templates" | Out-Null }

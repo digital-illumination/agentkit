@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - `AGENT.md` — Vendor-agnostic entry point (replaces `AI.md`)
 - `CLAUDE.md` — Thin pointer for Claude Code auto-discovery
+- `AGENTS.md` — Thin pointer for Codex / AGENTS.md-compatible tools
+- `GEMINI.md` — Thin pointer for Gemini CLI auto-discovery
+- `.windsurfrules` — Thin pointer for Windsurf / Cascade auto-discovery
 - `docs/SPEC-DRIVEN.md` — Spec-driven development workflow with status lifecycle, QA format, task conventions
 - `docs/TESTING-STRATEGY.md` — Golden thread testing strategy with spec-to-test traceability
 - `templates/` directory with 6 reusable templates:

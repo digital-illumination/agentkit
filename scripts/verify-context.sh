@@ -5,7 +5,6 @@ set -euo pipefail
 
 required_files=(
   "AGENT.md"
-  "CLAUDE.md"
   "docs/BOOTSTRAP.md"
   "docs/SPEC-DRIVEN.md"
   "docs/TESTING-STRATEGY.md"
@@ -14,6 +13,14 @@ required_files=(
   "docs/CODING-STANDARDS.md"
   "docs/DECISIONS.md"
   "updates/MONTHLY-UPDATES-TEMPLATE.md"
+)
+
+# Agent pointer files — at least one should exist for tool auto-discovery
+agent_pointer_files=(
+  "CLAUDE.md"
+  "AGENTS.md"
+  "GEMINI.md"
+  ".windsurfrules"
 )
 
 recommended_files=(
@@ -28,6 +35,18 @@ for f in "${required_files[@]}"; do
     missing=1
   fi
 done
+
+# Check that at least one agent pointer file exists
+pointer_found=0
+for f in "${agent_pointer_files[@]}"; do
+  if [ -f "$f" ]; then
+    pointer_found=1
+  fi
+done
+if [ $pointer_found -eq 0 ]; then
+  echo "Warning: No agent pointer files found (CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules)"
+  echo "  At least one is recommended for tool auto-discovery."
+fi
 
 for f in "${recommended_files[@]}"; do
   if [ ! -f "$f" ]; then

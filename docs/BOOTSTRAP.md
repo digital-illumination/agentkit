@@ -23,6 +23,9 @@ Then follow **Path A** (new repo) or **Path B** (existing repo) below to complet
 repository/
 ├── AGENT.md                          # Entry point (always read by AI)
 ├── CLAUDE.md                         # Claude Code auto-discovery pointer
+├── AGENTS.md                         # Codex / AGENTS.md-compatible tools pointer
+├── GEMINI.md                         # Gemini CLI auto-discovery pointer
+├── .windsurfrules                    # Windsurf / Cascade auto-discovery pointer
 ├── docs/
 │   ├── BOOTSTRAP.md                  # This file (reference)
 │   ├── SPEC-DRIVEN.md                # Spec-driven workflow
@@ -59,7 +62,7 @@ git submodule add https://github.com/digital-illumination/ai-context-system.git 
 bash .context/scripts/bootstrap-new-repo.sh
 ```
 
-This copies the canonical files (AGENT.md, CLAUDE.md, docs/, templates/) into your project root and seeds the monthly updates.
+This copies the canonical files (AGENT.md, agent pointer files, docs/, templates/) into your project root and seeds the monthly updates.
 
 ### Step 2: Fill in AGENT.md
 
@@ -108,7 +111,7 @@ Edit the docs copied by the bootstrap script:
 
 ```bash
 bash .context/scripts/verify-context.sh
-git add AGENT.md CLAUDE.md docs/ specs/ templates/ updates/ .specify/ .context
+git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules docs/ specs/ templates/ updates/ .specify/ .context
 git commit -m "docs: Initialise AI context system v3.0"
 ```
 
@@ -215,7 +218,7 @@ Edit the spec to describe **what already exists** (not what you plan to build). 
 
 ```bash
 bash .context/scripts/verify-context.sh
-git add AGENT.md CLAUDE.md docs/ specs/ templates/ updates/ .specify/ .context
+git add AGENT.md CLAUDE.md AGENTS.md GEMINI.md .windsurfrules docs/ specs/ templates/ updates/ .specify/ .context
 git commit -m "docs: Initialise AI context system v3.0 from existing codebase"
 ```
 
@@ -283,7 +286,7 @@ foundation spec, and verify the setup.
 After completing either path, verify:
 
 - [ ] `AGENT.md` has no remaining `[PLACEHOLDER]` markers
-- [ ] `CLAUDE.md` exists and points to AGENT.md
+- [ ] Agent pointer files exist and point to AGENT.md (CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules)
 - [ ] Constitution reflects actual project values
 - [ ] At least one spec exists in `specs/`
 - [ ] CI commands in AGENT.md actually work when run

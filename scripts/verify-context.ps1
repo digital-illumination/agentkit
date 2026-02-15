@@ -4,7 +4,6 @@ $ErrorActionPreference = "Stop"
 
 $RequiredFiles = @(
   "AGENT.md",
-  "CLAUDE.md",
   "docs/BOOTSTRAP.md",
   "docs/SPEC-DRIVEN.md",
   "docs/TESTING-STRATEGY.md",
@@ -13,6 +12,14 @@ $RequiredFiles = @(
   "docs/CODING-STANDARDS.md",
   "docs/DECISIONS.md",
   "updates/MONTHLY-UPDATES-TEMPLATE.md"
+)
+
+# Agent pointer files — at least one should exist for tool auto-discovery
+$AgentPointerFiles = @(
+  "CLAUDE.md",
+  "AGENTS.md",
+  "GEMINI.md",
+  ".windsurfrules"
 )
 
 $RecommendedFiles = @(
@@ -25,6 +32,18 @@ foreach ($f in $RequiredFiles) {
   if (-not (Test-Path $f)) {
     $Missing += $f
   }
+}
+
+# Check that at least one agent pointer file exists
+$PointerFound = $false
+foreach ($f in $AgentPointerFiles) {
+  if (Test-Path $f) {
+    $PointerFound = $true
+  }
+}
+if (-not $PointerFound) {
+  Write-Host "Warning: No agent pointer files found (CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules)" -ForegroundColor Yellow
+  Write-Host "  At least one is recommended for tool auto-discovery." -ForegroundColor Yellow
 }
 
 foreach ($f in $RecommendedFiles) {
