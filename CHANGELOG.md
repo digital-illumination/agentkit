@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.2.0] - 2026-02-15
+
+### Added
+- `sessions/` directory with 5 ready-to-paste agent session starters:
+  - `01-plan-next-feature.md` — planning agent proposes next spec from roadmap
+  - `02-implement-feature.md` — implementation agent builds a reviewed spec
+  - `03-qa-review.md` — QA agent verifies completed feature against spec
+  - `04-roadmap-review.md` — periodic roadmap horizon review
+  - `05-context-recovery.md` — recover context mid-project
+- Sessions copied by update-context scripts alongside templates
+
+### Changed
+- Renamed repo from `ai-context-system` to `agentkit`
+- Updated all internal references to new repo name
+- Updated README description to reflect full toolkit scope
+- Bumped version to 3.2.0
+
 ## [3.1.0] - 2026-02-15
 
 ### Added

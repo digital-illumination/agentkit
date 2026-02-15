@@ -18,6 +18,8 @@ if (-not (Test-Path "./docs")) { New-Item -ItemType Directory -Path "./docs" | O
 Copy-Item "$ContextDir/docs/*" -Destination "./docs" -Recurse -Force
 if (-not (Test-Path "./templates")) { New-Item -ItemType Directory -Path "./templates" | Out-Null }
 Copy-Item "$ContextDir/templates/*" -Destination "./templates" -Recurse -Force
+if (-not (Test-Path "./sessions")) { New-Item -ItemType Directory -Path "./sessions" | Out-Null }
+Copy-Item "$ContextDir/sessions/*" -Destination "./sessions" -Recurse -Force
 if (-not (Test-Path "./updates")) { New-Item -ItemType Directory -Path "./updates" | Out-Null }
 Copy-Item "$ContextDir/updates/MONTHLY-UPDATES-TEMPLATE.md" -Destination "./updates/" -Force
 

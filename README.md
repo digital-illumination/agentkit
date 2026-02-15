@@ -1,6 +1,6 @@
-# AI Context System
+# AgentKit
 
-A tool-agnostic, versioned context system for AI coding agents. Provides spec-driven development workflows, document templates, and structured project context that works with any AI tool (Claude, Windsurf, Cursor, Copilot, etc.).
+A spec-driven development toolkit for AI coding agents. Provides roadmap-to-code workflows, document templates, session starters, and structured project context that works with any AI tool (Claude Code, Codex, Windsurf, Gemini CLI, Cursor, Copilot, etc.).
 
 ## What's Included
 
@@ -13,6 +13,7 @@ A tool-agnostic, versioned context system for AI coding agents. Provides spec-dr
 | `.windsurfrules` | Thin pointer for Windsurf / Cascade auto-discovery |
 | `docs/` | 7 context documents (bootstrap, spec-driven, testing, architecture, standards, decisions, project context) |
 | `templates/` | 7 reusable templates (spec, plan, tasks, QA, checklist, constitution, roadmap) |
+| `sessions/` | 5 ready-to-paste session starters (plan, implement, QA, roadmap review, context recovery) |
 | `scripts/` | 6 helper scripts (3 bash + 3 PowerShell) for setup and maintenance |
 | `updates/` | Monthly work log template |
 
@@ -21,7 +22,7 @@ A tool-agnostic, versioned context system for AI coding agents. Provides spec-dr
 ### 1. Add as submodule
 
 ```bash
-git submodule add https://github.com/digital-illumination/ai-context-system.git .context
+git submodule add https://github.com/digital-illumination/agentkit.git .context
 ```
 
 ### 2. Run bootstrap
@@ -104,4 +105,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 
-**Version:** 3.1.0 | **License:** MIT
+**Version:** 3.2.0 | **License:** MIT

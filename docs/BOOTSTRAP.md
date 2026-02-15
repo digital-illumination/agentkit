@@ -1,4 +1,4 @@
-# AI Context System Bootstrap
+# AgentKit Bootstrap
 
 This document guides you through setting up the spec-driven AI context system for a project. It supports two scenarios: starting fresh with a new repository, or adding the system to an existing codebase.
 
@@ -9,7 +9,7 @@ This document guides you through setting up the spec-driven AI context system fo
 **Add the submodule, then run the bootstrap script:**
 
 ```bash
-git submodule add https://github.com/digital-illumination/ai-context-system.git .context
+git submodule add https://github.com/digital-illumination/agentkit.git .context
 bash .context/scripts/bootstrap-new-repo.sh
 ```
 
@@ -41,6 +41,7 @@ repository/
 │       ├── plan.md                   # Implementation plan
 │       ├── tasks.md                  # Task tracking
 │       └── qa.md                     # QA test plan
+├── sessions/                         # Agent session starter prompts
 ├── templates/                        # Reusable document templates
 ├── updates/
 │   ├── MONTHLY-UPDATES-TEMPLATE.md   # Template for monthly files
@@ -59,7 +60,7 @@ Use this path when starting a brand new project from scratch.
 ### Step 1: Add Submodule and Run Bootstrap
 
 ```bash
-git submodule add https://github.com/digital-illumination/ai-context-system.git .context
+git submodule add https://github.com/digital-illumination/agentkit.git .context
 bash .context/scripts/bootstrap-new-repo.sh
 ```
 
@@ -139,7 +140,7 @@ Use this path when adding the context system to a project that already has code,
 Same as Path A:
 
 ```bash
-git submodule add https://github.com/digital-illumination/ai-context-system.git .context
+git submodule add https://github.com/digital-illumination/agentkit.git .context
 bash .context/scripts/bootstrap-new-repo.sh
 ```
 

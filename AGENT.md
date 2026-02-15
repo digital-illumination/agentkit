@@ -38,6 +38,7 @@ For the project constitution, see `.specify/memory/constitution.md`.
 ├── ROADMAP.md          # Strategic roadmap
 ├── docs/               # Project documentation
 ├── specs/              # Feature specifications
+├── sessions/           # Agent session starter prompts
 ├── templates/          # Document templates
 └── updates/            # Monthly work logs
 ```

@@ -20,6 +20,8 @@ mkdir -p ./docs
 cp -R "$CONTEXT_DIR/docs/." ./docs/
 mkdir -p ./templates
 cp -R "$CONTEXT_DIR/templates/." ./templates/
+mkdir -p ./sessions
+cp -R "$CONTEXT_DIR/sessions/." ./sessions/
 mkdir -p ./updates
 cp "$CONTEXT_DIR/updates/MONTHLY-UPDATES-TEMPLATE.md" ./updates/
 
