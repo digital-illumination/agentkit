@@ -12,6 +12,12 @@ fi
 # Copy canonical files into project root.
 bash .context/scripts/update-context.sh
 
+# Create specs directory with foundation scaffold.
+mkdir -p specs/000-foundation
+
+# Create constitution directory.
+mkdir -p .specify/memory
+
 # Create updates folder and current/previous month files if needed.
 mkdir -p updates
 
@@ -37,3 +43,12 @@ else
   fi
   echo "Context bootstrap complete. Current month file: $MONTH_FILE"
 fi
+
+echo ""
+echo "Next steps:"
+echo "  1. Fill in AGENT.md (replace [PLACEHOLDER] markers)"
+echo "  2. Create constitution: cp templates/constitution-template.md .specify/memory/constitution.md"
+echo "  3. Create foundation spec in specs/000-foundation/"
+echo "  4. Fill in docs/ (PROJECT-CONTEXT, ARCHITECTURE, CODING-STANDARDS, DECISIONS)"
+echo "  5. Run: bash .context/scripts/verify-context.sh"
+echo "  6. See docs/BOOTSTRAP.md for full instructions (Path A or Path B)"
